@@ -4,16 +4,26 @@ import { ConvertTemp } from "./utils/converter";
 import { Result } from "postcss";
 
 function App() {
-  const [currMenu, setCurrMenu] = useState('temperature')
+  const [currMenu, setCurrMenu] = useState('temperature');
+  {/* Temperature hooks */}
   const [fromUnit, setFromUnit] = useState('celsius');
   const [toUnit, setToUnit] = useState('fahrenheit');
   const [inputValue, setInputValue] = useState('');
   const [result, setResult] = useState('');
+  {/* Length hooks */}
+  const [fromLengthUnit, setFromLengthUnit] = useState('meters');
+  const [toLengthUnit, setToLengthUnit] = useState('feet');
+  const [inputLengthValue, setInputLengthValue] = useState('');
+  const [lengthResult, setLengthResult] = useState('');
+  {/* Weigth hooks */}
+  const [fromWeigthhUnit, setFromWeigthhUnit] = useState('kilos');
+  const [toWeigthhUnit, setToWeigthhUnit] = useState('pounds');
+  const [inputWeigthhValue, setInputWeigthhValue] = useState('');
+  const [weigthhResult, setWeigthhResult] = useState('');
 
   function handleConvertTemperature() {
     setResult(ConvertTemp(inputValue, fromUnit, toUnit));
   }
-
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex items-center justify-center">
@@ -38,34 +48,24 @@ function App() {
 
         {currMenu === 'length' && (
           <div>
-
-          </div>
-        )}
-
-        {/*----------------------Temperature Converter------------------------*/}
-
-        {currMenu === 'temperature' && (
-          <div>
-            <div className="mb-4 space-y-2">
-              <h1>Tempreature Converter</h1>
+            <div>
+              <h1>Length Converter</h1>
               <p>Select the units to convert</p>
             </div>
             {/*----- Dropdownds----- */}
             <div className="flex">
               <div className="flex items-center gap-4">
                 <label htmlFor="temp-unit1">From</label>
-                <select id="temp-unit1" value={fromUnit} onChange={(e) => setFromUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
-                  <option value={"celsius"}>Celsius</option>
-                  <option value={"fahrenheit"}>Fahrenheit</option>
-                  <option value={"kelvin"}>Kelvin</option>
+                <select id="temp-unit1" value={fromLengthUnit} onChange={(e) => setFromUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                  <option value={"metric"}>Meters</option>
+                  <option value={"imperial"}>Feet</option>
                 </select>
               </div>
               <div className="flex items-center gap-8 ml-8">
                 <label htmlFor="temp-unit2">To</label>
-                <select id="temp-unit2" value={toUnit} onChange={(e) => setToUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
-                  <option value={"celsius"}>Celsius</option>
-                  <option value={"fahrenheit"}>Fahrenheit</option>
-                  <option value={"kelvin"}>Kelvin</option>
+                <select id="temp-unit2" value={toLengthUnit} onChange={(e) => setToUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                  <option value={"meters"}>Meters</option>
+                  <option value={"feet"}>Feet</option>
                 </select>
               </div>
             </div>
@@ -91,15 +91,64 @@ function App() {
           </div>
         )}
 
-        {/*----------------------Weigth Converter------------------------*/}
+      {/*----------------------Temperature Converter------------------------*/}
 
-        {currMenu === 'weigth' && (
-          <div>
-
+      {currMenu === 'temperature' && (
+        <div>
+          <div className="mb-4 space-y-2">
+            <h1>Tempreature Converter</h1>
+            <p>Select the units to convert</p>
           </div>
-        )}
-      </div>
+          {/*----- Dropdownds----- */}
+          <div className="flex">
+            <div className="flex items-center gap-4">
+              <label htmlFor="temp-unit1">From</label>
+              <select id="temp-unit1" value={fromUnit} onChange={(e) => setFromUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                <option value={"celsius"}>Celsius</option>
+                <option value={"fahrenheit"}>Fahrenheit</option>
+                <option value={"kelvin"}>Kelvin</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-8 ml-8">
+              <label htmlFor="temp-unit2">To</label>
+              <select id="temp-unit2" value={toUnit} onChange={(e) => setToUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                <option value={"celsius"}>Celsius</option>
+                <option value={"fahrenheit"}>Fahrenheit</option>
+                <option value={"kelvin"}>Kelvin</option>
+              </select>
+            </div>
+          </div>
+          {/*------Input Value------- */}
+
+          <div className="mt-4">
+            <input id="temp-value" type="number" value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Value to convert" className="w-full bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2" />
+          </div>
+          {/*------Converter Button-------- */}
+          <div>
+            <ConverterButton
+              onClick={handleConvertTemperature}
+              className={"w-full mt-4 cursor-pointer text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5"}>
+              Convert
+            </ConverterButton>
+          </div>
+          {/*------Result------- */}
+          <div className="mt-4 p-3 rounded-lg bg-slate-700 border border-slate-600">
+            <span className="font-semibold text-white">
+              {result === '' ? 'Result will show here' : result}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/*----------------------Weigth Converter------------------------*/}
+
+      {currMenu === 'weigth' && (
+        <div>
+
+        </div>
+      )}
     </div>
+    </div >
   );
 }
 
