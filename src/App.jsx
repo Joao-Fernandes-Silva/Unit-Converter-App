@@ -1,6 +1,6 @@
 import { ChoiceButton, ConverterButton } from "./components/button";
 import { useState } from "react";
-import { ConvertTemp } from "./utils/converter";
+import { ConvertTemp, ConvertLen, ConvertWeight } from "./utils/converters";
 import { Result } from "postcss";
 
 function App() {
