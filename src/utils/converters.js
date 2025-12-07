@@ -1,3 +1,23 @@
+export function ConvertLen(value, fromUnit, toUnit) {
+    const num = parseFloat(value);
+    let conNum = 0;
+
+    if (Number.isNaN(num)) {
+        return 'invalid';
+    }
+
+    if((fromUnit === 'meters' && toUnit === 'meters') || (fromUnit === 'feet' && toUnit === 'feet')) {
+        conNum = num;
+    }else if (fromUnit === 'meters' && toUnit === 'feet') {
+        conNum = num * 3.28084;
+    } else if (fromUnit === 'feet' && toUnit === 'meters') {
+        conNum = num / 3.28084;
+    } else {
+        return 'error';
+    }
+    return conNum;
+}
+
 export function ConvertTemp(value, fromUnit, toUnit) {
     const num = parseFloat(value);
     let conNum = 0;
@@ -26,27 +46,7 @@ export function ConvertTemp(value, fromUnit, toUnit) {
     return conNum;
 }
 
-function ConvertLen(value, fromUnit, toUnit) {
-    const num = parseFloat(value);
-    let conNum = 0;
-
-    if (Number.isNaN(num)) {
-        return 'invalid';
-    }
-
-    if((fromUnit === 'meters' && toUnit === 'meters') || (fromUnit === 'feet' && toUnit === 'feet')) {
-        conNum = num;
-    }else if (fromUnit === 'meters' && toUnit === 'feet') {
-        conNum = num * 3.28084;
-    } else if (fromUnit === 'feet' && toUnit === 'meters') {
-        conNum = num / 3.28084;
-    } else {
-        return 'error';
-    }
-    return conNum;
-}
-
-function ConvertWeight(value, fromUnit, toUnit) {
+export function ConvertWeight(value, fromUnit, toUnit) {
     const num = parseFloat(value);
     let conNum = 0;
 
