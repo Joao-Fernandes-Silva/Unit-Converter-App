@@ -7,11 +7,11 @@ export function ConvertLen(value, fromUnit, toUnit) {
     }
 
     if((fromUnit === 'meters' && toUnit === 'meters') || (fromUnit === 'feet' && toUnit === 'feet')) {
-        conNum = num;
+        conNum = Number.parseFloat(num).toFixed(2);
     }else if (fromUnit === 'meters' && toUnit === 'feet') {
-        conNum = num * 3.28084;
+        conNum = Number.parseFloat(num * 3.28084).toFixed(2);
     } else if (fromUnit === 'feet' && toUnit === 'meters') {
-        conNum = num / 3.28084;
+        conNum = Number.parseFloat(num / 3.28084).toFixed(2);
     } else {
         return 'error';
     }
