@@ -59,15 +59,15 @@ function App() {
             {/*----- Dropdownds----- */}
             <div className="flex">
               <div className="flex items-center gap-4">
-                <label htmlFor="temp-unit1">From</label>
-                <select id="temp-unit1" value={fromLengthUnit} onChange={(e) => setFromLengthUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                <label htmlFor="length-unit1">From</label>
+                <select id="length-unit1" value={fromLengthUnit} onChange={(e) => setFromLengthUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
                   <option value={"meters"}>Meters</option>
                   <option value={"feet"}>Feet</option>
                 </select>
               </div>
               <div className="flex items-center gap-8 ml-8">
-                <label htmlFor="temp-unit2">To</label>
-                <select id="temp-unit2" value={toLengthUnit} onChange={(e) => setToLengthUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
+                <label htmlFor="length-unit2">To</label>
+                <select id="length-unit2" value={toLengthUnit} onChange={(e) => setToLengthUnit(e.target.value)} className="bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2">
                   <option value={"meters"}>Meters</option>
                   <option value={"feet"}>Feet</option>
                 </select>
@@ -76,7 +76,7 @@ function App() {
             {/*------Input Value------- */}
 
             <div className="mt-4">
-              <input id="temp-value" type="number" value={inputLengthValue} onChange={(e) => setInputLengthValue(e.target.value)} placeholder="Value to convert" className="w-full bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2" />
+              <input id="length-value" type="number" value={inputLengthValue} onChange={(e) => setInputLengthValue(e.target.value)} placeholder="Value to convert" className="w-full bg-slate-700 text-white border border-slate-600 rounded-lg px-4 py-2" />
             </div>
             {/*------Converter Button-------- */}
             <div>
