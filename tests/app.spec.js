@@ -18,7 +18,7 @@ test('converts 0 celsius to 32 fahrenheit', async ({ page }) => {
     await page.locator('#temp-unit2').selectOption('fahrenheit');
     await page.locator('#temp-value').fill('0')
     await page.getByRole('button', { name: 'Convert'}).click();
-    await expect(page.getByText('32 fahrenheit')).toBeVisible();
+    await expect(page.getByText('32.00 fahrenheit')).toBeVisible();
 });
 
 test('convert 32 fahrenheit to 0 celsius', async ({ page }) => {
@@ -32,8 +32,22 @@ test('convert 32 fahrenheit to 0 celsius', async ({ page }) => {
     await expect(page.getByText('0 celsius')).toBeVisible();
 });
 
-test('converts 10 meters to 32.8 feet', async ({ page }) => {
+test('converts 10 meters to 32.81 feet', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', {name: 'Length'}).click();
-    await page.locator('#')
-})
+    await page.locator('#length-unit1').selectOption('meters')
+    await page.locator('#length-unit2').selectOption('feet');
+    await page.locator('#length-value').fill('10');
+    await page.getByRole('button', {name: 'Convert'}).click();
+    await expect(page.getByText('32.81 feet')).toBeVisible();
+});
+
+test('converts 10 kilos to 22.05 pounds', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', {name: 'Weight'}).click();
+    await page.locator('#weight-unit1').selectOption('kilograms')
+    await page.locator('#weight-unit2').selectOption('pounds');
+    await page.locator('#weight-value').fill('10');
+    await page.getByRole('button', {name: 'Convert'}).click();
+    await expect(page.getByText('22.00  pounds')).toBeVisible();
+});
